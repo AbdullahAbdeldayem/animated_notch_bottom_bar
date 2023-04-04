@@ -142,9 +142,9 @@ class _AnimatedNotchBottomBarState extends State<AnimatedNotchBottomBar> {
                                 position:
                                     _itemPosByScrollPosition(scrollPosition),
                                 color: widget.color,
-                                shadowElevation: widget.shadowElevation ?? 5.0,
+                                shadowElevation: widget.shadowElevation ?? 3.0,
                                 notchShadowElevation:
-                                    widget.notchShadowElevation ?? 5.0,
+                                    widget.notchShadowElevation ?? 3.0,
                                 notchShadowMarginFromNav:
                                     widget.notchShadowMarginFromNav,
                                 shadowMarginFromNav: widget.shadowMarginFromNav,
