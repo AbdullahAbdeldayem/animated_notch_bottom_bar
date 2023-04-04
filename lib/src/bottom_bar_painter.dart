@@ -55,14 +55,14 @@ class BottomBarPainter extends CustomPainter {
     const left = kMargin;
     final right = size.width - kMargin;
     const top = kMargin;
-    const bottom = top + kHeight;
+    const bottom = 90.0;
 
     final path = Path()
-      ..moveTo(left + kTopRadius, top)
+      ..moveTo(0 + kTopRadius, top)
       ..lineTo(position - kTopRadius, top)
       ..relativeArcToPoint(
         const Offset(kTopRadius, kTopRadius),
-        radius: const Radius.circular(kTopRadius),
+        radius: const Radius.circular(10),
       )
       ..relativeArcToPoint(
         const Offset((kCircleRadius + kCircleMargin) * 2, 0.0),
@@ -73,28 +73,52 @@ class BottomBarPainter extends CustomPainter {
         const Offset(kTopRadius, -kTopRadius),
         radius: const Radius.circular(kTopRadius),
       )
-      ..lineTo(right - kTopRadius, top)
+      ..lineTo(size.width - kTopRadius, top)
       ..relativeArcToPoint(
         const Offset(kTopRadius, kTopRadius),
-        radius: const Radius.circular(kTopRadius),
+        radius: const Radius.circular(10),
       )
-      ..lineTo(right, bottom - kBottomRadius)
+      ..lineTo(size.width, bottom)
+
+      ..lineTo(0 , bottom)
+
+      ..lineTo(0, top + kTopRadius)
       ..relativeArcToPoint(
-        const Offset(-kBottomRadius, kBottomRadius),
-        radius: const Radius.circular(kBottomRadius),
-      )
-      ..lineTo(left + kBottomRadius, bottom)
+        const Offset(kTopRadius, -kTopRadius),
+        radius: const Radius.circular(10),
+      );
+    final shadowPath = Path()
+      ..moveTo(0 + kTopRadius, top -2)
+      ..lineTo(position - kTopRadius, top-2)
       ..relativeArcToPoint(
-        const Offset(-kBottomRadius, -kBottomRadius),
-        radius: const Radius.circular(kBottomRadius),
+        const Offset(kTopRadius, kTopRadius),
+        radius: const Radius.circular(10),
       )
-      ..lineTo(left, top + kTopRadius)
+      ..relativeArcToPoint(
+        const Offset((kCircleRadius + kCircleMargin) * 2, 0.0),
+        radius: const Radius.circular(kCircleRadius + kCircleMargin),
+        clockwise: false,
+      )
       ..relativeArcToPoint(
         const Offset(kTopRadius, -kTopRadius),
         radius: const Radius.circular(kTopRadius),
+      )
+      ..lineTo(size.width - kTopRadius, top -2)
+      ..relativeArcToPoint(
+        const Offset(kTopRadius, kTopRadius),
+        radius: const Radius.circular(10),
+      )
+      ..lineTo(size.width, bottom)
+
+      ..lineTo(0 , bottom)
+
+      ..lineTo(0, top + kTopRadius )
+      ..relativeArcToPoint(
+        const Offset(kTopRadius, -kTopRadius),
+        radius: const Radius.circular(10),
       );
     if (this.showShadow) {
-      canvas..drawShadow(path, _shadowColor, 5.0, true);
+      canvas..drawShadow(shadowPath, _shadowColor, 5.0, true);
     }
     canvas.drawPath(path, _paint);
   }
