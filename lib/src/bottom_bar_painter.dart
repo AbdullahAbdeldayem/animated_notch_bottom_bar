@@ -13,6 +13,8 @@ class BottomBarPainter extends CustomPainter {
         required this.notchShadowColor,
      required this.shadowMarginFromNav ,
         required this.notchShadowMarginFromNav,
+        required this.notchShadowElevation,
+        required this.shadowElevation,
       required this.notchColor})
       : _paint = Paint()
           ..color = color
@@ -44,6 +46,8 @@ class BottomBarPainter extends CustomPainter {
   final Color notchShadowColor;
   final double shadowMarginFromNav;
   final double notchShadowMarginFromNav;
+  final double shadowElevation;
+  final double notchShadowElevation;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -120,7 +124,7 @@ class BottomBarPainter extends CustomPainter {
         radius: const Radius.circular(10),
       );
     if (this.showShadow) {
-      canvas..drawShadow(shadowPath, shadowColor, 5.0, true);
+      canvas..drawShadow(shadowPath, shadowColor, shadowElevation, true);
     }
     canvas.drawPath(path, _paint);
   }
@@ -152,7 +156,7 @@ class BottomBarPainter extends CustomPainter {
         kPi * 2,
       );
     if (this.showShadow) {
-      canvas..drawShadow(shadowPath, shadowColor, 5.0, true);
+      canvas..drawShadow(shadowPath, shadowColor, notchShadowElevation, true);
     }
     canvas.drawPath(path, _notchPaint);
   }

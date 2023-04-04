@@ -48,17 +48,21 @@ class AnimatedNotchBottomBar extends StatefulWidget {
   final Color? shadowColor;
   final Color? notchShadowColor;
   final double shadowMarginFromNav;
-  final double  notchShadowMarginFromNav;
+  final double notchShadowMarginFromNav;
+  final double? shadowElevation;
+  final double? notchShadowElevation;
 
   const AnimatedNotchBottomBar(
       {Key? key,
       required this.pageController,
       required this.bottomBarItems,
       required this.onTap,
-        required this.shadowMarginFromNav,
-        required this.notchShadowMarginFromNav,
-        this.shadowColor ,
-        this.notchShadowColor,
+      required this.shadowMarginFromNav,
+      required this.notchShadowMarginFromNav,
+      this.shadowElevation,
+      this.notchShadowElevation,
+      this.shadowColor,
+      this.notchShadowColor,
       this.color = Colors.white,
       this.itemLabelStyle,
       this.showShadow = true,
@@ -138,10 +142,16 @@ class _AnimatedNotchBottomBarState extends State<AnimatedNotchBottomBar> {
                                 position:
                                     _itemPosByScrollPosition(scrollPosition),
                                 color: widget.color,
-                                notchShadowMarginFromNav: widget.notchShadowMarginFromNav,
+                                shadowElevation: widget.shadowElevation ?? 5.0,
+                                notchShadowElevation:
+                                    widget.notchShadowElevation ?? 5.0,
+                                notchShadowMarginFromNav:
+                                    widget.notchShadowMarginFromNav,
                                 shadowMarginFromNav: widget.shadowMarginFromNav,
-                                shadowColor: widget.notchShadowColor ??  Colors.grey.shade600,
-                                notchShadowColor: widget.shadowColor ??  Colors.grey.shade600,
+                                shadowColor: widget.notchShadowColor ??
+                                    Colors.grey.shade600,
+                                notchShadowColor:
+                                    widget.shadowColor ?? Colors.grey.shade600,
                                 showShadow: widget.showShadow,
                                 notchColor: widget.notchColor),
                           ),

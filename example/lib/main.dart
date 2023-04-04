@@ -69,9 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.white,
               showLabel: false,
               notchShadowMarginFromNav: 1,
-              shadowMarginFromNav: 0,
-              notchShadowColor: Colors.green,
+              shadowMarginFromNav: 10,
+              notchShadowColor: Colors.white,
               shadowColor: Colors.red,
+        showBlurBottomBar: true,blurOpacity: 0.9,
               notchColor: Colors.black87,
               bottomBarItems: [
                 const BottomBarItem(
@@ -137,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 _pageController.animateToPage(
                   index,
                   duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeIn,
+                  curve: Curves.fastOutSlowIn,
                 );
               },
             )
