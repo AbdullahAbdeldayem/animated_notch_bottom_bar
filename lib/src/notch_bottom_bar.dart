@@ -195,7 +195,7 @@ class _AnimatedNotchBottomBarState extends State<AnimatedNotchBottomBar> {
   }
 
   double _firstItemPosition() {
-    return 26;
+    return 16;
   }
 
   double _lastItemPosition() {
@@ -204,7 +204,7 @@ class _AnimatedNotchBottomBarState extends State<AnimatedNotchBottomBar> {
 
   double _itemDistance() {
     return (_lastItemPosition() - _firstItemPosition()) /
-        (widget.bottomBarItems.length + 0.2);
+        (widget.bottomBarItems.length);
   }
 
   double _itemPosByScrollPosition(double scrollPosition) {
