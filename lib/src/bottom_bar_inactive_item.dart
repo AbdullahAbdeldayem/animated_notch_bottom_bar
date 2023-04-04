@@ -36,6 +36,7 @@ class BottomBarInActiveItem extends StatelessWidget {
     return SizedBox.fromSize(
       size: const Size(kCircleRadius * 2, kCircleRadius * 2),
       child: InkWell(
+        borderRadius: BorderRadius.circular(25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
