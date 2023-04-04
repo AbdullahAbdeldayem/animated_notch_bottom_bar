@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icons.home_filled,
                     color: Colors.blueAccent,
                   ),
-                  itemLabel: 'Page 1',
+                  itemLabel: 'Page first',
                 ),
                 const BottomBarItem(
                   inActiveItem: Icon(
