@@ -9,11 +9,14 @@ class BottomBarPainter extends CustomPainter {
       {required this.position,
       required this.color,
       required this.showShadow,
+      required this.shadowColor,
+        required this.notchShadowColor,
+     required this.shadowMarginFromNav ,
+        required this.notchShadowMarginFromNav,
       required this.notchColor})
       : _paint = Paint()
           ..color = color
           ..isAntiAlias = true,
-        _shadowColor = Colors.grey.shade600,
         _notchPaint = Paint()
           ..color = notchColor
           ..isAntiAlias = true;
@@ -28,7 +31,6 @@ class BottomBarPainter extends CustomPainter {
   final Paint _paint;
 
   /// Shadow Color
-  final Color _shadowColor;
 
   /// Boolean to show shadow
   final bool showShadow;
@@ -38,6 +40,10 @@ class BottomBarPainter extends CustomPainter {
 
   /// Color for the notch
   final Color notchColor;
+  final Color shadowColor;
+  final Color notchShadowColor;
+  final double shadowMarginFromNav;
+  final double notchShadowMarginFromNav;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -79,17 +85,15 @@ class BottomBarPainter extends CustomPainter {
         radius: const Radius.circular(10),
       )
       ..lineTo(size.width, bottom)
-
-      ..lineTo(0 , bottom)
-
+      ..lineTo(0, bottom)
       ..lineTo(0, top + kTopRadius)
       ..relativeArcToPoint(
         const Offset(kTopRadius, -kTopRadius),
         radius: const Radius.circular(10),
       );
     final shadowPath = Path()
-      ..moveTo(0 + kTopRadius, top -2)
-      ..lineTo(position - kTopRadius, top-2)
+      ..moveTo(0 + kTopRadius, top - shadowMarginFromNav)
+      ..lineTo(position - kTopRadius, top - shadowMarginFromNav)
       ..relativeArcToPoint(
         const Offset(kTopRadius, kTopRadius),
         radius: const Radius.circular(10),
@@ -103,22 +107,20 @@ class BottomBarPainter extends CustomPainter {
         const Offset(kTopRadius, -kTopRadius),
         radius: const Radius.circular(kTopRadius),
       )
-      ..lineTo(size.width - kTopRadius, top -2)
+      ..lineTo(size.width - kTopRadius, top - shadowMarginFromNav)
       ..relativeArcToPoint(
         const Offset(kTopRadius, kTopRadius),
         radius: const Radius.circular(10),
       )
       ..lineTo(size.width, bottom)
-
-      ..lineTo(0 , bottom)
-
-      ..lineTo(0, top + kTopRadius )
+      ..lineTo(0, bottom)
+      ..lineTo(0, top + kTopRadius)
       ..relativeArcToPoint(
         const Offset(kTopRadius, -kTopRadius),
         radius: const Radius.circular(10),
       );
     if (this.showShadow) {
-      canvas..drawShadow(shadowPath, _shadowColor, 5.0, true);
+      canvas..drawShadow(shadowPath, shadowColor, 5.0, true);
     }
     canvas.drawPath(path, _paint);
   }
@@ -137,8 +139,20 @@ class BottomBarPainter extends CustomPainter {
         0,
         kPi * 2,
       );
+    final shadowPath = Path()
+      ..addArc(
+        Rect.fromCircle(
+          center: Offset(
+            position + kCircleMargin + kCircleRadius,
+            kMargin + kCircleMargin + notchShadowMarginFromNav,
+          ),
+          radius: kCircleRadius,
+        ),
+        0,
+        kPi * 2,
+      );
     if (this.showShadow) {
-      canvas..drawShadow(path, _shadowColor, 5.0, true);
+      canvas..drawShadow(shadowPath, shadowColor, 5.0, true);
     }
     canvas.drawPath(path, _notchPaint);
   }

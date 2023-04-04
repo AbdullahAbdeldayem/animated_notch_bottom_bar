@@ -45,12 +45,20 @@ class AnimatedNotchBottomBar extends StatefulWidget {
 
   /// Color of bottom bar
   final Color notchColor;
+  final Color? shadowColor;
+  final Color? notchShadowColor;
+  final double shadowMarginFromNav;
+  final double  notchShadowMarginFromNav;
 
   const AnimatedNotchBottomBar(
       {Key? key,
       required this.pageController,
       required this.bottomBarItems,
       required this.onTap,
+        required this.shadowMarginFromNav,
+        required this.notchShadowMarginFromNav,
+        this.shadowColor ,
+        this.notchShadowColor,
       this.color = Colors.white,
       this.itemLabelStyle,
       this.showShadow = true,
@@ -130,6 +138,10 @@ class _AnimatedNotchBottomBarState extends State<AnimatedNotchBottomBar> {
                                 position:
                                     _itemPosByScrollPosition(scrollPosition),
                                 color: widget.color,
+                                notchShadowMarginFromNav: widget.notchShadowMarginFromNav,
+                                shadowMarginFromNav: widget.shadowMarginFromNav,
+                                shadowColor: widget.notchShadowColor ??  Colors.grey.shade600,
+                                notchShadowColor: widget.shadowColor ??  Colors.grey.shade600,
                                 showShadow: widget.showShadow,
                                 notchColor: widget.notchColor),
                           ),

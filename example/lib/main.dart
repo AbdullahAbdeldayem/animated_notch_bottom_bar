@@ -68,6 +68,10 @@ class _MyHomePageState extends State<MyHomePage> {
               pageController: _pageController,
               color: Colors.white,
               showLabel: false,
+              notchShadowMarginFromNav: 1,
+              shadowMarginFromNav: 0,
+              notchShadowColor: Colors.green,
+              shadowColor: Colors.red,
               notchColor: Colors.black87,
               bottomBarItems: [
                 const BottomBarItem(
