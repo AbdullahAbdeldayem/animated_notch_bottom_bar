@@ -37,6 +37,8 @@ class BottomBarInActiveItem extends StatelessWidget {
       size: const Size(kCircleRadius * 2, kCircleRadius * 2),
       child: InkWell(
         borderRadius: BorderRadius.circular(25),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
